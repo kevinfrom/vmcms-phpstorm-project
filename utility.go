@@ -97,7 +97,7 @@ func getPathSeparator() string {
 /*
 ** Find files recursively from given path
  */
-func findPhpstormExecutable(path string) string {
+func findPhpstormExecutableForWindows(path string) string {
 	// Get immediate files in given path
 	files, err := ioutil.ReadDir(path)
 	errorMessage := fmt.Sprintf("Failed to find files in %s!", path)
@@ -120,21 +120,9 @@ func findPhpstormExecutable(path string) string {
 	})
 
 	// Find phpstorm executable
-	var expectedExecutableFileName string
-	osName := runtime.GOOS
-
-	switch osName {
-	case "windows":
-		expectedExecutableFileName = "phpstorm64.exe"
-	case "darwin":
-		expectedExecutableFileName = "phpstorm"
-	default:
-		exitWithErrorMessage(fmt.Sprintf("%s operating system is not supported!", osName))
-	}
-
 	path = path + getPathSeparator() + directories[0]
 	path = path + getPathSeparator() + "bin"
-	path = path + getPathSeparator() + expectedExecutableFileName
+	path = path + getPathSeparator() + "phpstorm64.exe"
 	exitIfFileDoesNotExist(path)
 
 	return path

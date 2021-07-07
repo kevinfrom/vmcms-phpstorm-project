@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"runtime"
 )
 
 type config struct {
@@ -34,7 +35,12 @@ func (config config) parseConfig() {
 	exitIfFileDoesNotExist(config.parsedConfig["projects_path"])
 	exitIfFileDoesNotExist(config.parsedConfig["phpstorm_path"])
 
-	config.parsedConfig["phpstorm_path"] = findPhpstormExecutable(config.parsedConfig["phpstorm_path"])
+	switch runtime.GOOS {
+	case "windows":
+		config.parsedConfig["phpstorm_path"] = findPhpstormExecutableForWindows(config.parsedConfig["phpstorm_path"])
+	case "darwin":
+		config.parsedConfig["phpstorm_path"] = "phpstorm"
+	}
 }
 
 /*
