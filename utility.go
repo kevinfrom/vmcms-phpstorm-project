@@ -42,21 +42,16 @@ func createDirectoryIfNotExists(path string) {
 }
 
 /*
-** Set working directory relative to binary
+** Set working directory to parent directory of directory containg binaries
  */
 func setWorkingDirectory() {
-	tries := 0
-	found, _ := os.Stat("config.example.json")
-
-	for found == nil {
-		os.Chdir("..")
-		found, _ = os.Stat("config.example.json")
-		tries++
-
-		if tries >= 3 {
-			exitWithErrorMessage("Failed to set working directory!")
-		}
+	exeDir, err := os.Executable()
+	if err != nil {
+		exitWithErrorMessage("Failed to set working directory!")
 	}
+
+	os.Chdir(exeDir)
+	os.Chdir(".." + getPathSeparator())
 }
 
 /*

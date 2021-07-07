@@ -14,11 +14,11 @@ type config struct {
 /*
 ** Get config
  */
-func getConfig(configPath string, configExamplePath string) config {
+func getConfig() config {
 	config := config{
 		parsedConfig:      map[string]string{},
-		configPath:        configPath,
-		configExamplePath: configExamplePath,
+		configPath:        "config.json",
+		configExamplePath: "config.example.json",
 	}
 	config.parseConfig()
 
