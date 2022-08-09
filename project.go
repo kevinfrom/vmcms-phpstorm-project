@@ -189,7 +189,7 @@ func (project project) writePhpConfig() {
 
 	content = append(content, "<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
 	content = append(content, "<project version=\"4\">")
-	content = append(content, "\\t<component name=\"PhpProjectSharedConfiguration\" php_language_level=\"7.4\">")
+	content = append(content, "\\t<component name=\"PhpProjectSharedConfiguration\" php_language_level=\"8.1\">")
 	content = append(content, "\\t\\t<option name=\"suggestChangeDefaultLanguageLevel\" value=\"false\" />")
 	content = append(content, "\\t</component>")
 	content = append(content, "</project>")
