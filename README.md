@@ -7,7 +7,7 @@ A small golang program to easily setup a vmcms6 project for phpstorm and open it
 1. Clone this repository
 
 ````bash
-git clone git@github.com:kevinfrom/vmcms-setup-project.git
+git clone git@github.com:kevinfrom/vmcms-phpstorm-project.git
 ````
 
 2. Copy the `config.example.json` file as `config.json` and edit your values.
